@@ -1,0 +1,15 @@
+{
+  "name": "puppet-assets",
+  "version": "0.1.0",
+  "author": "frozenfoxx <siliconfoxx@gmail.com>",
+  "summary": "Generic templates and static files for Puppet",
+  "license": "MIT",
+  "source": "https://github.com/frozenfoxx/puppet-assets",
+  "project_page": "https://github.com/frozenfoxx/puppet-assets",
+  "issues_url": "https://github.com/frozenfoxx/puppet-assets/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
