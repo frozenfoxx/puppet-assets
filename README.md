@@ -6,7 +6,6 @@
 1. [Setup](#setup)
     * [Beginning with assets](#beginning-with-assets)
 1. [Usage](#usage)
-1. [Reference](#reference)
 1. [Limitations](#limitations)
 1. [Development](#development)
 
@@ -36,8 +35,6 @@ When referencing templates use this module's templates with:
 content => template("assets/template-name.erb"),
 [...]
 ```
-
-## Reference
 
 ## Limitations
 
