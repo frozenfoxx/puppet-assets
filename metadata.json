@@ -1,9 +1,9 @@
 {
   "name": "puppet-assets",
   "version": "0.1.0",
-  "author": "frozenfoxx <siliconfoxx@gmail.com>",
+  "author": "FrozenFOXX <frozenfoxx@churchoffoxx.net>",
   "summary": "Generic templates and static files for Puppet",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "source": "https://github.com/frozenfoxx/puppet-assets",
   "project_page": "https://github.com/frozenfoxx/puppet-assets",
   "issues_url": "https://github.com/frozenfoxx/puppet-assets/issues",
