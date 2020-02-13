@@ -1,0 +1,63 @@
+<% if @vmpooler_providers.length > 0 -%>
+:providers:
+<% @vmpooler_providers.each do |provider_key, provider_value| -%>
+  :<%= provider_key -%>:
+<% @vmpooler_providers[provider_key].each do |key, value| -%>
+<%= "    #{key}: #{value}" %>
+<% end -%>
+<% end -%>
+<% end -%>
+
+<% if @vmpooler_redis.length > 0 -%>
+:redis:
+<% @vmpooler_redis.each do |key, value| -%>
+<%= "  #{key}: #{value}" %>
+<% end -%>
+<% end -%>
+
+<% if @vmpooler_auth.length > 0 -%>
+:auth:
+<% @vmpooler_auth.each do |key, value| -%>
+<%= "  #{key}: #{value}" %>
+<% end -%>
+<% end -%>
+
+<% if @vmpooler_tagfilter.length > 0 -%>
+:tagfilter:
+<% @vmpooler_tagfilter.each do |key, value| -%>
+<%= "  #{key}: #{value}" %>
+<% end -%>
+<% end -%>
+
+<% if @vmpooler_config.length > 0 -%>
+:config:
+<% @vmpooler_config.each do |key, value| -%>
+<% if value.is_a? Array then -%>
+<%= "  #{key}:" %>
+<% value.each do |item| -%>
+<%= "    - #{item}" %>
+<% end -%>
+<% else -%>
+<%= "  #{key}: #{value}" %>
+<% end -%>
+<% end -%>
+<% end -%>
+
+<% if @vmpooler_pools.length > 0 -%>
+:pools:
+<% @vmpooler_pools.each do |pool| -%>
+  - name: '<%= pool["name"] -%>'
+    alias: [ '<%= pool["alias"] -%>' ]
+    template: '<%= pool["template"] -%>'
+    folder: '<%= pool["folder"] -%>'
+    datastore: '<%= pool["datastore"] -%>'
+    clone_target: '<%= pool["clone_target"] -%>'
+    create_linked_clones: <%= pool["create_linked_clones"] %>
+    size: <%= pool["size"] %>
+    timeout: <%= pool["timeout"] %>
+    provider: <%= pool["provider"] %>
+    datacenter: '<%= pool["datacenter"] -%>'
+    defaultsize: <%= pool["defaultsize"] %>
+    description: '<%= pool["description"] -%>'
+<% end -%>
+<% end -%>
