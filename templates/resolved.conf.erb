@@ -1,0 +1,13 @@
+[Resolve]
+<% if @dns_servers.length > 0 -%>
+DNS=<% @dns_servers.each do |ip| -%><%= "#{ip} " -%><% end %>
+<% end -%>
+#FallbackDNS=
+<% if @domains.length > 0 -%>
+Domains=<% @domains.each do |domain| -%><%= "#{domain} " -%><% end %>
+<% end -%>
+#LLMNR=no
+#MulticastDNS=no
+#DNSSEC=no
+#Cache=yes
+#DNSStubListener=yes
