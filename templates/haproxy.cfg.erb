@@ -1,0 +1,33 @@
+global
+  chroot  /var/lib/haproxy
+daemon
+group  haproxy
+log  <%= @ip -%> local0
+maxconn  4000
+pidfile  /var/run/haproxy.pid
+stats  socket /var/lib/haproxy/stats
+user  haproxy
+
+defaults
+log  global
+maxconn  8000
+option  redispatch
+retries  3
+stats  enable
+timeout  http-request 10s
+timeout  queue 1m
+timeout  connect 10s
+timeout  client 1m
+timeout  server 1m
+timeout  check 10s
+
+<% if @listeners.length > 0 -%>
+<% @listeners.each do |listener| -%>
+listen <%= @listener[0] %>
+bind <%= @listener['ip'] -%>:<%= @listener['port'] ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
+mode <%= @listener['mode'] %>
+balance roundrobin
+option tcplog
+server <%= @listener['server_fqdn'] -%> <%= @listener['server_ip'] -%> check
+<% end -%>
+<% end -%>
