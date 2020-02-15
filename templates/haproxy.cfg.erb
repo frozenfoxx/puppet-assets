@@ -24,7 +24,7 @@ timeout  check 10s
 <% if @listeners.length > 0 -%>
 <% @listeners.each do |listener| -%>
 listen <%= @listener[0] %>
-bind <%= @listener['ip'] -%>:<%= @listener['port'] ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
+bind <%= @listener['ip'] -%>:<%= @listener['port'] -%> ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
 mode <%= @listener['mode'] %>
 balance roundrobin
 option tcplog
