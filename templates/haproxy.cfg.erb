@@ -22,12 +22,12 @@ timeout  server 1m
 timeout  check 10s
 
 <% if @listeners.length > 0 -%>
-<% @listeners.each do |listener| -%>
-listen <%= listener[0] %>
-bind <%= listener[0]['ip'] -%>:<%= listener[0]['port'] -%> ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
-mode <%= listener[0]['mode'] %>
+<% @listeners.each do |listener, attribute| -%>
+listen <%= listener %>
+bind <%= attribute['ip'] -%>:<%= attribute['port'] -%> ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
+mode <%= attribute['mode'] %>
 balance roundrobin
 option tcplog
-server <%= listener[0]['server_fqdn'] -%> <%= listener[0]['server_ip'] -%> check
+server <%= attribute['server_fqdn'] -%> <%= attribute['server_ip'] -%> check
 <% end -%>
 <% end -%>
