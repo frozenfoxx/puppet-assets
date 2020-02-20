@@ -1,12 +1,16 @@
 global
   chroot  /var/lib/haproxy
 daemon
-group  haproxy
-log  <%= @ip -%> local0
+<% if not @group.nil? -%>
+group <%= @group %>
+<% end -%>
+<% if not @user.nil? -%>
+user <%= @user %>
+<% end -%>
+log <%= @ip -%> local0
 maxconn  4000
 pidfile  /var/run/haproxy.pid
 stats  socket /var/lib/haproxy/stats
-user  haproxy
 
 defaults
 log  global
@@ -28,6 +32,6 @@ bind <%= attribute['ip'] -%>:<%= attribute['port'] -%> ssl crt /etc/ssl/certs/<%
 mode <%= attribute['mode'] %>
 balance roundrobin
 option tcplog
-server <%= attribute['server_fqdn'] -%> <%= attribute['server_ip'] -%> check
+server <%= attribute['server_fqdn'] -%> <%= attribute['server_ip'] -%>:<%= attribute['server_port'] -%> check
 <% end -%>
 <% end -%>
