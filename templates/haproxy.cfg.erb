@@ -1,6 +1,8 @@
 global
   chroot  /var/lib/haproxy
+<% if not @daemon.nil? -%>
 daemon
+<% end -%>
 <% if not @group.nil? -%>
 group <%= @group %>
 <% end -%>
