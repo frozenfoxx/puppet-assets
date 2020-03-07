@@ -12,7 +12,7 @@ jenkins:
 <% if @users.length > 0 -%>
 <% @users.each do |user, attribute| -%>
 <% if attribute['admin'] then -%>
-              <%= puts "- \"#{user}\"" %>
+              - "<%= user -%>"
 <% end -%>
 <% end -%>
 <% end -%>
