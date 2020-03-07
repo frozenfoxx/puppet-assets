@@ -1,0 +1,29 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Jenkins administrators"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "admin"
+          - name: "readonly"
+            description: "Read-only users"
+            permissions:
+              - "Overall/Read"
+              - "Job/Read"
+            assignments:
+              - "authenticated"
+  securityRealm:
+    local:
+      allowsSignup: false
+<% if @users.length > 0 -%>
+      users:
+<% @users.each do |user, attribute| -%>
+        - id: "<%= user -%>"
+          password: "<%= attribute['password'] -%>"
+<% end -%>
+<% end -%>
