@@ -9,7 +9,13 @@ jenkins:
             permissions:
               - "Overall/Administer"
             assignments:
-              - "admin"
+<% if @users.length > 0 -%>
+<% @users.each do |user, attribute| -%>
+<% if attribute['admin'] then -%>
+              <%= puts "- \"#{user}\"" %>
+<% end -%>
+<% end -%>
+<% end -%>
           - name: "readonly"
             description: "Read-only users"
             permissions:
