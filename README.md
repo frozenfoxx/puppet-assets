@@ -23,7 +23,8 @@ It is preferable to use a `Puppetfile` and [r10k](https://github.com/puppetlabs/
 
 ```
 mod 'assets',
-  :git => 'https://github.com/frozenfoxx/puppet-assets.git'
+  :git => 'https://github.com/frozenfoxx/puppet-assets.git',
+  :branch => 'main'
 ```
 
 ## Usage
