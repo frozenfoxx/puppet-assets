@@ -30,7 +30,11 @@ timeout  check 10s
 <% if @listeners.length > 0 -%>
 <% @listeners.each do |listener, attribute| -%>
 listen <%= listener %>
+<% if attribute['ssl'] -%>
 bind <%= attribute['ip'] -%>:<%= attribute['port'] -%> ssl crt /etc/ssl/certs/<%= @fqdn -%>.pem
+<% else -%>
+bind <%= attribute['ip'] -%>:<%= attribute['port'] %>
+<% end -%>
 mode <%= attribute['mode'] %>
 balance roundrobin
 option tcplog
